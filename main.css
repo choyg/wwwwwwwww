@@ -31,10 +31,19 @@ button {
   font-size: 1.3rem;
 }
 
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
 .mt-sm {
   margin-top: 8px;
 }
 
 .mt-md {
   margin-top: 12px;
+}
+
+.ml-md {
+  margin-left: 12px;
 }

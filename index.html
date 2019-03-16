@@ -16,8 +16,10 @@
       <a id="download"></a>
     </div>
     <form onsubmit="event.preventDefault(); getDownloadable()" class="mt-md">
-      <input id="video-url" name="url" class="txt-input" placeholder="YouTube Link" />
-      <button type="submit" class="mt-sm">Submit</button>
+      <div class="flex-center">
+        <input id="video-url" name="url" class="txt-input" placeholder="YouTube Link" />
+        <button type="submit" class="ml-md">Submit</button>
+      </div>
     </form>
   </div>
 </body>
@@ -33,7 +35,7 @@
     }).then(res => {
       document.getElementById("title").innerHTML = res.title;
       document.getElementById("download").innerHTML = "Download"
-      document.getElementById("download").href = res.url; 
+      document.getElementById("download").href = res.url;
       document.getElementById("download").download = res.url;
       return false;
     }).catch(err => {
