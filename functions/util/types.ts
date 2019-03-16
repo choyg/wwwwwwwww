@@ -17,14 +17,22 @@ export enum VideoQuality {
   HIGH = 136, // 720p
 }
 
+/**
+ * Format metadata of the downloadable content
+ */
 export interface ContentFormat {
-  url: string,
-  quality: string,
+  url: string, // Download url
+  quality: string, // itag for now
   size: string, // Disk space
   length: string, // Amount of time you will waste consuming this content
 }
 
+/**
+ * Content metadata of the YouTube video
+ */
 export interface ContentInfo {
-  title: string,
-  author: string,
+  title: string, // Video url
+  author: string, // Video author name
 }
+
+export type ContentDownloadable = ContentFormat & ContentInfo;
