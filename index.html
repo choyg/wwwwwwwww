@@ -49,6 +49,7 @@
       // referrer: "no-referrer", // no-referrer, *client
       body: JSON.stringify(data)
     })
+      .then(response => response.text()); // parses response to text
   }
 </script>
 
