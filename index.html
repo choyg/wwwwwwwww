@@ -11,8 +11,11 @@
 
 <body>
   <div class="centered container">
-    <p id="results"></p>
-    <form onsubmit="event.preventDefault(); getDownloadable()">
+    <div id="results">
+      <h3 id="title"></h3>
+      <a id="download"></a>
+    </div>
+    <form onsubmit="event.preventDefault(); getDownloadable()" class="mt-md">
       <input id="video-url" name="url" class="txt-input" placeholder="YouTube Link" />
       <button type="submit" class="mt-sm">Submit</button>
     </form>
@@ -28,7 +31,10 @@
         filter: "audioonly",
       },
     }).then(res => {
-      document.getElementById("results").innerHTML = res;
+      document.getElementById("title").innerHTML = res.title;
+      document.getElementById("download").innerHTML = "Download"
+      document.getElementById("download").href = res.url; 
+      document.getElementById("download").download = res.url;
       return false;
     }).catch(err => {
       document.getElementById("results").innerHTML = err;
@@ -37,6 +43,15 @@
   }
 
   function post(url, data = {}) {
+    // Mock API calls
+    // return Promise.resolve(JSON.parse(`{
+    //   "url": "https://example.com",
+    //   "length": "233685",
+    //   "quality": "139",
+    //   "size": "3782697",
+    //   "author": "Author Name",
+    //   "title": "Video title"
+    // }`));
     return fetch(url, {
       method: "POST",
       headers: {
@@ -49,7 +64,7 @@
       // referrer: "no-referrer", // no-referrer, *client
       body: JSON.stringify(data)
     })
-      .then(response => response.text()); // parses response to text
+      .then(response => response.json()); // parses response to json
   }
 </script>
 
