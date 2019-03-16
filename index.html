@@ -23,15 +23,12 @@
   function getDownloadable() {
     var url = document.getElementById("video-url").value;
     post('/.netlify/functions/ytdl', {
-      // mode: "cors", // no-cors, cors, *same-origin
-      // cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-      // credentials: "same-origin", // include, *same-origin, omit
       url: url,
       options: {
         filter: "audioonly",
       },
     }).then(res => {
-      document.getElementById("results").innerHTML = err;
+      document.getElementById("results").innerHTML = res;
       return false;
     }).catch(err => {
       document.getElementById("results").innerHTML = err;
@@ -45,6 +42,9 @@
       headers: {
         "Content-Type": "application/json",
       },
+      // mode: "no-cors", // no-cors, cors, *same-origin
+      // cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      // credentials: "same-origin", // include, *same-origin, omit
       // redirect: "follow", // manual, *follow, error
       // referrer: "no-referrer", // no-referrer, *client
       body: JSON.stringify(data)
