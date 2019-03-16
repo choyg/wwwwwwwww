@@ -6,13 +6,51 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Lol</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css"> -->
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css">
 </head>
 
 <body>
-<h1>
-  welcome.
-</h1>
+  <div class="centered container">
+    <p id="results"></p>
+    <form onsubmit="event.preventDefault(); getDownloadable()">
+      <input id="video-url" name="url" class="txt-input" placeholder="YouTube Link" />
+      <button type="submit" class="mt-sm">Submit</button>
+    </form>
+  </div>
 </body>
+
+<script>
+  function getDownloadable() {
+    var url = document.getElementById("video-url").value;
+    post('/.netlify/functions/ytdl', {
+      // mode: "cors", // no-cors, cors, *same-origin
+      // cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      // credentials: "same-origin", // include, *same-origin, omit
+      url: url,
+      options: {
+        filter: "audioonly",
+      },
+    }).then(res => {
+      document.getElementById("results").innerHTML = err;
+      return false;
+    }).catch(err => {
+      document.getElementById("results").innerHTML = err;
+      return false;
+    });
+  }
+
+  function post(url, data = {}) {
+    return fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // redirect: "follow", // manual, *follow, error
+      // referrer: "no-referrer", // no-referrer, *client
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json()); // parses response to JSON
+  }
+</script>
 
 </html>
