@@ -10,10 +10,10 @@
   "devDependencies": {
     "@types/aws-lambda": "8.10.23",
     "@types/node": "11.11.3",
-    "netlify-lambda": "1.4.3"
+    "netlify-lambda": "1.6.3"
   },
   "dependencies": {
     "@babel/preset-typescript": "7.3.3",
-    "ytdl-core": "0.29.1"
+    "ytdl-core": "^0.29.5"
   }
 }
