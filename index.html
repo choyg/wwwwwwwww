@@ -33,13 +33,13 @@
         filter: "audioonly",
       },
     }).then(res => {
-      document.getElementById("title").innerHTML = res.title;
-      document.getElementById("download").innerHTML = "Download"
+      document.getElementById("title").innerText = res.title;
+      document.getElementById("download").innerText = "Download"
       document.getElementById("download").href = res.url;
       document.getElementById("download").download = res.url;
       return false;
     }).catch(err => {
-      document.getElementById("results").innerHTML = err;
+      document.getElementById("results").innerText = err;
       return false;
     });
   }
