@@ -6,6 +6,7 @@ html, body {
 body {
   font-size: 1rem;
 }
+
 .container {
   height: 100%;
   padding: 36px;
@@ -20,20 +21,29 @@ body {
   justify-content: center;
 }
 
+.btn-full {
+  width: 100%;
+}
+
 .txt-input {
   display: block;
   padding: 8px;
-  font-size: 1.5rem;
-  min-width: 400px;
+  font-size: 1.2rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+@media (max-width: 630px) {
 }
 
 button {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
 }
 
 .flex-center {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .mt-sm {
